@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --ligh-white:#ffffff8f;
+    --second-color:#25bb15;
+}
+::selection{
+    color: var(--second-color);
+}
+ul{
+    list-style: none;
+}
+/* a{
+    text-decoration: none;
+} */
+
+p{
+    color: white;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background-image: url('../../media/main/assets/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: cursive;
+}
+
+.container{
+    width: 370px;
+    max-width: 95%;
+    margin: 0 auto 0 auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+.container .todoList{
+    border: 2px solid white;
+    border-radius: 20px;
+    min-height: 80vh;
+    padding: 20px 10px 20px 10px;
+    width: 370px;
+    max-width: 95%;
+    position: relative;
+    max-height: fit-content;
+    margin: 5% 0 5% 0;
+}
+.container .todoList img{
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    left: 0;
+    transition: all .3s ease-in-out;
+}
+.container .todoList .title{
+    text-align: center;
+    margin: 13px 0 35px 0;
+    font-size: 35px;
+    font-weight: 900;
+}
+.container .todoList .search{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px 0px;
+    align-items: center;
+}
+.container .todoList .search input{
+    border: 2px solid var(--ligh-white);
+    border-radius: 20px;
+    width: 76%;
+    padding: 8px 11px;
+    color: white;
+    font-size: 16px;
+    background-color: transparent;
+}
+.container .todoList .search button{
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+.container .todoList .search input:focus{
+    border: none;
+    border-radius: none;
+}
+.container .todoList .search input::placeholder{
+    color: var(--ligh-white);
+    opacity: 1;
+}
+.container .todoList .search i{
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 20px;
+    border: 2px solid var(--ligh-white);
+    transition: all ease-in-out 0.3s;
+}
+.container .todoList .search i:hover{
+    color: var(--second-color);
+}
+.container .todoList .type{
+    display: flex;
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+    justify-content: space-evenly;
+}
+.container .todoList .type .mainBtn button{
+    background-color: transparent;
+    border-radius: 34%;
+    color: white;
+}
+.container .todoList ul.type{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around;
+    font-size: 12px;
+    font-weight: 600;
+}
+.container .todoList ul.type li{
+    border: 1px solid #ffffff8f;
+    border-radius: 20px;
+    padding: 5px 12px;
+    letter-spacing: -0.4px;
+    cursor: pointer;
+    transition: .2s all ease-in-out;
+}
+
+.container .todoList ul.type li:hover{
+    background-color: var(--second-color);
+}
+
+.container .todoList .data{
+    /* background-color: #00000059; */
+    width: 95%;
+    top: 45%;
+    border-radius: 10px;
+    margin: 10% auto 0% auto;
+}
+.container .todoList .data #showTasks{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all ease-in-out .3s;
+}
+.container .todoList .data .tasks{
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+    background-color: #3c3879b0;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+.container .todoList .data .tasks .completedTask button{
+    position: absolute;
+    left: 3%;
+    top: 30%;
+}
+.container .todoList .data .tasks .completedTask .completeImage{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--second-color);
+    display: none;
+    background-image: url('../../media/main/assets/check.svg');
+}
+
+.container .todoList .data .tasks .completedTask img:hover{
+    background-color: #25bb15;
+}
+.container .todoList .data .tasks .completedTask .circle{
+    position: absolute;
+    border: 2px solid white;
+    width: 20px;
+    height: 20px;
+    left: 3%;
+    border-radius: 50%;
+    top: 30%;
+    cursor: pointer;
+}
+
+.container .todoList .data .tasks .completed{
+    background-color: #000000a1;
+    width: 1%;
+    position: absolute;
+    height: 50%;
+    left: 0;
+    top: 14px;
+    z-index: 9;
+    transition: all ease-in-out .3s;
+}
+
+.container .todoList .data .tasks .aTask{
+    position: absolute;
+    outline: none;
+    flex: 2;
+    width: 73%;
+    border-radius: 7px;
+    padding: 8px;
+    color: white;
+}
+.container .todoList .data .tasks .deleteTask button{
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    background-color: #e5393594;
+    border-radius: 26%;
+}
+.container .todoList .data .tasks .deleteTask i{
+    color: white;
+    font-size: 17px;
+    padding: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #00000033;
+    border-radius: 10px;
+    transition: all ease-in-out .2s;
+}
+.container .todoList .data .tasks .deleteTask i:hover{
+    background-color: rgba(0, 0, 0, 0.733);
+}
+
+
+@media (max-width: 385px) {
+    .container .todoList ul.type {
+        font-size: 10px;
+    }
+    .container .todoList ul.type li {
+        padding: 5px 8px;
+    }
+}

@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="todoList">
+            <img src="media/main/assets/empty.svg" alt="" id="mainPic">
+            <p class="title">Todo List</p>
+            <form method="POST" action = "{% url 'add_task' %}">
+                {%csrf_token%}
+                <div class="search">
+                    <input type="text" placeholder="Add a new task" id="addNewTask" name="addNewTask">
+                    <button type="submit"><i class="ri-add-circle-fill"></i></button>
+                </div>
+                </form>
+                <ul class="type">
+
+                    <form method = "POST" action="{%url 'see_all_tasks' %}" class="mainBtn">
+                        {% csrf_token %}
+                        <button type="submit"><li id="seeAllTasks">See All</li></button>
+                    </form>
+
+                    <form method = "POST" action="{%url 'complete_task' %}" class="mainBtn">
+                        {% csrf_token %}
+                        <button type="submit"><li id="completedTask">Complete</li></button>
+                    </form>
+
+                    <form method="POST" action="{% url 'incomplete_task' %}" class="mainBtn incompleteTask">
+                        {%csrf_token%}
+                        <button type="submit"><li id="incompleteTask">Incomplete</li></button>
+                    </form>
+
+                    <form action="{% url 'delete_all_tasks' %}" class="mainBtn deleteAllTasks">
+                        <button type="submit"><li id="deleteTasks">Delete All</li></button>
+                    </form>
+
+                </ul>
+                <div class="data">
+                    <ul id="showTasks">
+                    {% for task in tasks %}
+                    <li>
+                        <div class="tasks">
+                            <form action="{% url 'mark_as_completed' task.id %}" class="completedTask">
+                                {%csrf_token%}
+                                <button type="submit">
+                                    <span class="circle">
+                                        <span class="completeImage" style="display: {%if task.is_completed %} block {%else%} none {%endif%};"></span>
+
+                                    </span>
+                                </button>
+                                <span class="completed" style="width: {%if task.is_completed %} 90% {%else%} 0 {%endif%};"></span>
+                            </form>
+
+                            
+                            <p class="aTask">{{task.content}}</p>
+
+
+                            <form action="{% url 'delete_task' task.id %}" class="deleteTask">
+                                <button type="submit"><i class="ri-close-fill"></i></button>
+                            </form>
+                           
+                        </div>
+                    </li>
+                    {%endfor%}
+                    </ul>
+                </div>
+            
+        </div>
+    </div>
+    
+
+    {% comment %} <script src="script.js"></script> {% endcomment %}
+</body>
+</html>
